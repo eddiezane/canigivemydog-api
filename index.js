@@ -8,11 +8,11 @@ app.get('/', (req, res) => {
   let q = req.query.q
 
   query(q)
-  .then(answer => {
-    res.json({ err: null, answer })
+  .then(resp => {
+    res.json({ error: null, question: resp.question, answer: resp.answer })
   })
   .catch(err => {
-    res.json({ err:  err.toString(), answer: null })
+    res.json({ error:  err.toString(), question: null, answer: null })
   })
 })
 
